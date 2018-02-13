@@ -23,7 +23,7 @@
         android:layout_below="@+id/question_label"
         android:layout_marginTop="15dp"
         android:text="TextView"
-        tools:text="Pregunta 1"
+        tools:text="Lorem ipsum xd"
         android:textSize="20sp"/>
 
     <RadioGroup
@@ -41,6 +41,24 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="Resposta 1" />
+
+        <RadioButton
+            android:id="@+id/answer2"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Resposta 2" />
+
+        <RadioButton
+            android:id="@+id/answer3"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Resposta 3" />
+
+        <RadioButton
+            android:id="@+id/answer4"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="Resposta 4" />
     </RadioGroup>
 
     <Button
