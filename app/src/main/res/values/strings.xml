@@ -2,6 +2,7 @@
     <string name="app_name">Quiz</string>
     <string name="question_label">Pregunta 1</string>
     <string name="btn_check">Comprova</string>
+    <string name="next">next</string>
 
     <string name="question_content">Quina és la capital d\'Afganistan?</string>
 

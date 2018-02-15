@@ -62,7 +62,7 @@
     </RadioGroup>
 
     <Button
-        android:id="@+id/checkBtn"
+        android:id="@+id/btn_next"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
@@ -71,5 +71,5 @@
         android:layout_marginBottom="33dp"
         android:layout_marginEnd="23dp"
         android:layout_marginRight="23dp"
-        android:text="@string/btn_check" />
+        android:text="@string/next" />
 </RelativeLayout>
