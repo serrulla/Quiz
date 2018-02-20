@@ -13,4 +13,6 @@
         <item>Kabul</item>
     </array>
 
+    <string name="restart">Restart</string>
+
 </resources>

@@ -1,6 +1,8 @@
 package com.serrulla.eric.quiz;
 
+import android.content.DialogInterface;
 import android.content.res.Resources;
+import android.support.v7.app.AlertDialog;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -27,14 +29,12 @@ public class QuizActivity extends AppCompatActivity {
 
     private int curr;  //current question index
     private Button btn_next;
+    private TextView question_label;
+    private TextView question_text;
 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_quiz);
-
-        curr = 0;
-        loadQuestions();
-        showQuestion();
 
         btn_next = findViewById(R.id.btn_next);
         btn_next.setOnClickListener(new View.OnClickListener(){
@@ -45,6 +45,16 @@ public class QuizActivity extends AppCompatActivity {
         });
 
         rgroup = findViewById(R.id.answers);
+        question_label = findViewById(R.id.question_label);
+        question_text = findViewById(R.id.question_text);
+
+
+
+
+        curr = 0;
+        loadQuestions();
+        showQuestion();
+
     }
 
     private void nextQuestion() {
@@ -73,8 +83,35 @@ public class QuizActivity extends AppCompatActivity {
             }
         }
         String msg = String.format("Respostes correctes: %d | Respostes incorrectes: %d", good, bad );
+
+        AlertDialog.Builder builder = new AlertDialog.Builder(this);
+        builder.setTitle("Resultats");
+        builder.setMessage(msg);
+        builder.setPositiveButton(android.R.string.ok, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                finish();
+            }
+        });
+        builder.setNegativeButton(R.string.restart, new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int i) {
+                restartQuiz();
+            }
+
+        });
+        builder.create().show();
+
         Toast.makeText(this, msg, Toast.LENGTH_SHORT).show();
-        finish();
+        //finish();
+    }
+
+    private void restartQuiz() {
+        for (int i=0; i< responses.length; i++){
+            responses[i]=0;
+        }
+        curr = 0;
+        showQuestion();
     }
 
     private void loadQuestions() {
@@ -90,6 +127,7 @@ public class QuizActivity extends AppCompatActivity {
     }
 
     private void showQuestion() {
+        question_label.setText(String.format("Pregunta %d/%d", curr+1, questions.length));
         TextView question_text = findViewById(R.id.question_text);  //R is for resource
         question_text.setText(questions[curr]);
 
